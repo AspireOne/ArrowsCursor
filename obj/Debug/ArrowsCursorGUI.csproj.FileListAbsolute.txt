@@ -1,0 +1,10 @@
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\bin\Debug\ArrowsCursorGUI.exe.config
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\bin\Debug\ArrowsCursorGUI.exe
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\bin\Debug\ArrowsCursorGUI.pdb
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.csproj.AssemblyReference.cache
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.Properties.Resources.resources
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.csproj.GenerateResource.cache
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.csproj.CoreCompileInputs.cache
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.exe
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.pdb
+C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.MainForm.resources
