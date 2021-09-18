@@ -24,7 +24,7 @@ namespace ArrowsCursorGUI
         public readonly ClickKeyObj ClickKey = new ClickKeyObj();
         public readonly SpeedObj Speed = new SpeedObj();
         public bool Consume = false;
-        
+
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
         
@@ -35,8 +35,8 @@ namespace ArrowsCursorGUI
             Hook = new GlobalKeyboardHook(code =>
             {
                 bool isArrow = Arrows.Arrows.Any(tuple => tuple.code == code);
-
-                return isArrow && MainKey.Pressed || Consume && (code == MainKey.Code || code == ClickKey.Code);
+                
+                return (isArrow && MainKey.Pressed) || (Consume && (code == MainKey.Code || code == ClickKey.Code));
             });
         }
 
@@ -76,6 +76,7 @@ namespace ArrowsCursorGUI
         public class ClickKeyObj
         {
             public int Code = 163;
+            public bool Pressed = false;
         }
         
         public class ArrowsObj
@@ -135,34 +136,34 @@ namespace ArrowsCursorGUI
         
         private void HandleKeyboardPressed(GlobalKeyboardHookEventArgs e)
         {
-            Debug.WriteLine("win32 code: " + e.KeyboardData.VirtualCode);
             bool isKeyDown = e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown || e.KeyboardState == GlobalKeyboardHook.KeyboardState.SysKeyDown;
+            Debug.WriteLine(e.KeyboardState + " isdown: " + isKeyDown);
             int code = e.KeyboardData.VirtualCode;
             bool isMainKey = code == MainKey.Code;
             bool isClickKey = code == ClickKey.Code;
+            
+            if (isClickKey && (!ClickKey.Pressed || !isKeyDown))
+            {
+                Debug.WriteLine(isKeyDown);
+                ClickMouse(isKeyDown);
+            }
 
             if (isMainKey && isKeyDown && !MainKey.Pressed) 
                 HandleMainKeyDownPressed();
 
-            if (!UpdatePressedState(code, isKeyDown, isMainKey))
+            if (!UpdatePressedState(code, isKeyDown, isMainKey, isClickKey))
                 return;
 
             if (!MainKey.Pressed || !Arrows.Arrows.Any(arrow => arrow.pressed))
                 Loop.Pause();
             else if (MainKey.Pressed && Arrows.Arrows.Any(arrow => arrow.pressed)) 
                 Loop.Resume();
-            
-            if (isClickKey)
-            {
-                Debug.WriteLine("sdasdasdsa");
-                ClickMouse(isKeyDown);
-            }
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
         private static void ClickMouse(bool down) =>
-            mouse_event(down ? MOUSEEVENTF_LEFTDOWN : MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+            mouse_event((down ? MOUSEEVENTF_LEFTDOWN : MOUSEEVENTF_LEFTUP), Cursor.Position.X, Cursor.Position.Y, 0, 0);
 
         private void HandleMainKeyDownPressed()
         {
@@ -175,11 +176,17 @@ namespace ArrowsCursorGUI
                 MainKey.LastPressTime = Environment.TickCount;
         }
 
-        private bool UpdatePressedState(int code, bool isKeyDown, bool isMainKey)
+        private bool UpdatePressedState(int code, bool isKeyDown, bool isMainKey, bool isClickKey)
         {
             if (isMainKey)
             {
                 MainKey.Pressed = isKeyDown;
+                return true;
+            }
+
+            if (isClickKey)
+            {
+                ClickKey.Pressed = isKeyDown;
                 return true;
             }
 

@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.SpeedLevelsLbl = new System.Windows.Forms.Label();
       this.SpeedLevelsDescLbl = new System.Windows.Forms.Label();
       this.LevelBox1 = new System.Windows.Forms.NumericUpDown();
@@ -259,6 +260,7 @@
       this.Controls.Add(this.SpeedLevelsLbl);
       this.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
       this.Name = "MainForm";
       this.Text = "Arrow Cursor";

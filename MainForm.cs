@@ -15,6 +15,8 @@ namespace ArrowsCursorGUI
   {
     private readonly GlobalKeyboardHook Hook = new GlobalKeyboardHook();
     private readonly Controller Controller = new Controller();
+    private bool PrevConsumed;
+    
     public MainForm()
     {
       InitializeComponent(); // Must come first.
@@ -35,6 +37,7 @@ namespace ArrowsCursorGUI
         ClickKeyBtn.Text = new KeysConverter().ConvertToString(Controller.ClickKey.Code);
         ClickKeyBtn.Click += (obj, e) =>
         {
+          PrevConsumed = Controller.Consume;
           Controller.Consume = false;
           ClickKeyStateLbl.Text = "Press any key...";
           ClickKeyBtn.Text = "";
@@ -47,6 +50,7 @@ namespace ArrowsCursorGUI
         MainKeyBtn.Text = new KeysConverter().ConvertToString(Controller.MainKey.Code);
         MainKeyBtn.Click += (obj, e) =>
         {
+          PrevConsumed = Controller.Consume;
           Controller.Consume = false;
           MainKeyStateLbl.Text = "Press any key...";
           MainKeyBtn.Text = "";
@@ -76,7 +80,7 @@ namespace ArrowsCursorGUI
     
     private void HandleClickKeyButtonKeyPressed(object o, GlobalKeyboardHookEventArgs e)
     {
-      Controller.Consume = true;
+      Controller.Consume = PrevConsumed;
       Hook.KeyboardPressed -= HandleClickKeyButtonKeyPressed;
       ClickKeyStateLbl.Text = "Click to change";
       ClickKeyBtn.Text = new KeysConverter().ConvertToString(e.KeyboardData.VirtualCode);
@@ -85,7 +89,7 @@ namespace ArrowsCursorGUI
     
     private void HandleMainKeyButtonKeyPressed(object o, GlobalKeyboardHookEventArgs e)
     {
-      Controller.Consume = true;
+      Controller.Consume = PrevConsumed;
       Hook.KeyboardPressed -= HandleMainKeyButtonKeyPressed;
       MainKeyStateLbl.Text = "Click to change";
       MainKeyBtn.Text = new KeysConverter().ConvertToString(e.KeyboardData.VirtualCode);
