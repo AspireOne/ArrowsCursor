@@ -24,7 +24,7 @@ namespace ArrowsCursorGUI
         public readonly MainKeyObj MainKey = new MainKeyObj();
         public readonly ClickKeyObj ClickKey = new ClickKeyObj();
         public readonly SpeedObj Speed;
-        public bool Consume = true;
+        public bool Consume = false;
 
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
