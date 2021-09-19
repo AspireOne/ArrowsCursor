@@ -7,11 +7,9 @@
     <list default="true" id="32c5716c-b7e6-4fdc-b9b0-520c0bf7369e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ArrowsCursorGUI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ArrowsCursorGUI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlobalKeyboardHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GlobalKeyboardHook.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MainForm.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MainForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainForm.resx" beforeDir="false" afterPath="$PROJECT_DIR$/MainForm.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/ArrowsCursorGUI.MainForm.resources" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/ArrowsCursorGUI.MainForm.resources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/ArrowsCursorGUI.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/ArrowsCursorGUI.csproj.FileListAbsolute.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +29,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a1ce1c69645646719db9dfa57cf6b99c66ea0/67/24330153/ConfigurationManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/matej/RiderProjects/ArrowsCursorGUI/MainForm.Designer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/matej/RiderProjects/ArrowsCursorGUI/MainForm.Designer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/matej/RiderProjects/ArrowsCursorGUI/MainForm.Designer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1y2Xw5BOqnhsUgr7FhdT6Rs9qHV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -46,6 +41,7 @@
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager">
     <configuration name="ArrowsCursorGUI" type="DotNetProject" factoryName=".NET Project">
@@ -78,7 +74,9 @@
       <workItem from="1631450899356" duration="6747000" />
       <workItem from="1631550766616" duration="3438000" />
       <workItem from="1631894001299" duration="594000" />
-      <workItem from="1631952811728" duration="22347000" />
+      <workItem from="1631952811728" duration="22795000" />
+      <workItem from="1631991983055" duration="172000" />
+      <workItem from="1632054604267" duration="6148000" />
     </task>
     <servers />
   </component>
@@ -95,8 +93,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

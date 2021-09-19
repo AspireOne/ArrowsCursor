@@ -22,10 +22,10 @@ namespace ArrowsCursorGUI
     //Based on https://gist.github.com/Stasonix
     internal class GlobalKeyboardHook : IDisposable
     {
-        private readonly Func<int, bool> ShouldConsume;
+        private readonly Func<int, KeyboardState, bool> ShouldConsume;
         public event EventHandler<GlobalKeyboardHookEventArgs> KeyboardPressed;
 
-        public GlobalKeyboardHook(Func<int, bool> shouldConsume = null)
+        public GlobalKeyboardHook(Func<int, KeyboardState, bool> shouldConsume = null)
         {
             ShouldConsume = shouldConsume;
             _windowsHookHandle = IntPtr.Zero;
@@ -190,7 +190,7 @@ namespace ArrowsCursorGUI
             var wparamTyped = wParam.ToInt32();
             object o = Marshal.PtrToStructure(lParam, typeof(LowLevelKeyboardInputEvent));
             var p = (LowLevelKeyboardInputEvent)o;
-            bool consume = ShouldConsume?.Invoke(p.VirtualCode) ?? false;
+            bool consume = ShouldConsume?.Invoke(p.VirtualCode, (KeyboardState)wparamTyped) ?? false;
 
             if (!Enum.IsDefined(typeof(KeyboardState), wparamTyped))
                 return consume ? (IntPtr)1 : CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);

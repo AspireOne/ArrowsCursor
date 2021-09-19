@@ -27,7 +27,13 @@ namespace ArrowsCursorGUI
       disableKeysCheckbox.CheckedChanged += (o, e) => Controller.Consume = disableKeysCheckbox.Checked;
       disableKeysCheckbox.Checked = Controller.Consume;
 
-        Controller.Run();
+      disableFirstSpeedLevelCheckbox.Checked = Controller.Speed.FirstDisabled;
+      disableFirstSpeedLevelCheckbox.CheckedChanged += (o, e) =>
+        LevelBox1.Enabled = !(Controller.Speed.FirstDisabled = disableFirstSpeedLevelCheckbox.Checked);
+
+      AccelerateCheckbox.Checked = Controller.Speed.Accelerate;
+      AccelerateCheckbox.CheckedChanged += (o, e) => Controller.Speed.Accelerate = AccelerateCheckbox.Checked; 
+      Controller.Run();
 
       
       // All this duplicate code (along with it's handler methods) could be abstracted and made into a component,
@@ -66,7 +72,7 @@ namespace ArrowsCursorGUI
         {
           levelBoxes[i].Value = Controller.Speed.Levels[i];
           int iCopy = i;
-          levelBoxes[i].ValueChanged += (obj, e) => Controller.Speed.ChangeLevel(iCopy, (int)levelBoxes[iCopy].Value);
+          levelBoxes[i].ValueChanged += (obj, e) => Controller.Speed.ChangeLevelValue(iCopy, (int)levelBoxes[iCopy].Value);
         }
 
         Controller.SpeedChanged += (obj, e) =>
@@ -87,7 +93,7 @@ namespace ArrowsCursorGUI
       Controller.ClickKey.Code = e.KeyboardData.VirtualCode;
     }
     
-    private void HandleMainKeyButtonKeyPressed(object o, GlobalKeyboardHookEventArgs e)
+    private void HandleMainKeyButtonKeyPressed(object o, GlobalKeyboardHookEventArgs e)  
     {
       Controller.Consume = PrevConsumed;
       Hook.KeyboardPressed -= HandleMainKeyButtonKeyPressed;

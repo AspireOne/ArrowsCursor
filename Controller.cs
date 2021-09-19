@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -22,8 +23,8 @@ namespace ArrowsCursorGUI
         public readonly ArrowsObj Arrows = new ArrowsObj();
         public readonly MainKeyObj MainKey = new MainKeyObj();
         public readonly ClickKeyObj ClickKey = new ClickKeyObj();
-        public readonly SpeedObj Speed = new SpeedObj();
-        public bool Consume = false;
+        public readonly SpeedObj Speed;
+        public bool Consume = true;
 
         private const int MOUSEEVENTF_LEFTDOWN = 0x02;
         private const int MOUSEEVENTF_LEFTUP = 0x04;
@@ -31,22 +32,51 @@ namespace ArrowsCursorGUI
 
         public Controller()
         {
+            Speed = new SpeedObj(() => SpeedChanged?.Invoke(Speed, EventArgs.Empty));
             Loop = new CursorMovementUpdateLoop(Arrows, Speed);
-            Hook = new GlobalKeyboardHook(code =>
+            Hook = new GlobalKeyboardHook((code, state) =>
             {
-                bool isArrow = Arrows.Arrows.Any(tuple => tuple.code == code);
+                if (state == GlobalKeyboardHook.KeyboardState.KeyUp ||
+                    state == GlobalKeyboardHook.KeyboardState.SysKeyUp)
+                    return false;
                 
-                return (isArrow && MainKey.Pressed) || (Consume && (code == MainKey.Code || code == ClickKey.Code));
+                bool isArrow = Arrows.Arrows.Any(tuple => tuple.code == code);
+                bool isClickKey = ClickKey.Code == code;
+                
+                //return (isArrow && MainKey.Pressed) || (Consume && (code == MainKey.Code || code == ClickKey.Code));
+                return (MainKey.Pressed && (isArrow || isClickKey)) || (Consume && code == MainKey.Code);
             });
         }
 
         public class SpeedObj
         {
             public readonly int[] Levels = { 7, 15, 21 };
+            private readonly Action LevelChangeHandler;
+            private bool _firstDisabled;
+            public bool Accelerate = false;
+
+            public bool FirstDisabled
+            {
+                get => _firstDisabled;
+                set
+                {
+                    _firstDisabled = value;
+                    if (value && CurrentLevel == 0)
+                        SetNextLevel();
+                }
+            }
+
             public int CurrentLevel { get; private set; } = 1;
             public int CurrentSpeed { get; private set; }
+            
+            
+            public SpeedObj(Action levelChangeHandler)
+            {
+                LevelChangeHandler = levelChangeHandler;
+                CurrentSpeed = Levels[CurrentLevel];
+            }
 
-            public void ChangeLevel(int index, int value)
+            public void ChangeLevelValue(int index, int value)
             {
                 Levels[index] = value;
                 
@@ -54,14 +84,14 @@ namespace ArrowsCursorGUI
                     CurrentSpeed = Levels[CurrentLevel];
             }
 
-            public SpeedObj() => CurrentSpeed = Levels[CurrentLevel];
-
             public void SetNextLevel()
             {
                 if (++CurrentLevel >= Levels.Length)
-                    CurrentLevel = 0;
+                    CurrentLevel = FirstDisabled ? 1 : 0;
                 
                 CurrentSpeed = Levels[CurrentLevel];
+                
+                LevelChangeHandler.Invoke();
             }
         }
 
@@ -75,8 +105,8 @@ namespace ArrowsCursorGUI
 
         public class ClickKeyObj
         {
-            public int Code = 163;
-            public bool Pressed = false;
+            public int Code = 162;
+            public bool Pressed;
         }
         
         public class ArrowsObj
@@ -96,6 +126,8 @@ namespace ArrowsCursorGUI
         
         private class CursorMovementUpdateLoop
         {
+            private float AccelerationValue;
+            private float MaxAccelerationValue;
             private readonly ArrowsObj Arrows;
             private readonly SpeedObj Speed;
             private readonly System.Timers.Timer Timer = new System.Timers.Timer(13)
@@ -108,7 +140,15 @@ namespace ArrowsCursorGUI
                 Timer.Elapsed += (obj, e) => OnTimerTick();
             }
 
-            public void Resume() => Timer.Enabled = true;
+            public void Resume()
+            {
+                if (Timer.Enabled)
+                    return;
+                
+                Timer.Enabled = true;
+                AccelerationValue = 0;
+                MaxAccelerationValue = Speed.CurrentSpeed;
+            }
             public void Pause() => Timer.Enabled = false;
 
             private void OnTimerTick()
@@ -123,6 +163,19 @@ namespace ArrowsCursorGUI
                     x -= Speed.CurrentSpeed;
                 if (Arrows.GetArrow(ArrowsObj.Arrow.Right).pressed)
                     x += Speed.CurrentSpeed;
+                
+                if (Speed.Accelerate)
+                {
+                    int acc = (int)AccelerationValue;
+                    
+                    if (x != 0)
+                        x += x < 0 ? -acc : acc;
+                    if (y != 0)
+                        y += y < 0 ? -acc : acc;
+
+                    if (AccelerationValue < MaxAccelerationValue)
+                        AccelerationValue += 0.07f;
+                }
 
                 Cursor.Position = new Point(Cursor.Position.X + x, Cursor.Position.Y + y);
             }
@@ -137,16 +190,12 @@ namespace ArrowsCursorGUI
         private void HandleKeyboardPressed(GlobalKeyboardHookEventArgs e)
         {
             bool isKeyDown = e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown || e.KeyboardState == GlobalKeyboardHook.KeyboardState.SysKeyDown;
-            Debug.WriteLine(e.KeyboardState + " isdown: " + isKeyDown);
             int code = e.KeyboardData.VirtualCode;
             bool isMainKey = code == MainKey.Code;
             bool isClickKey = code == ClickKey.Code;
-            
-            if (isClickKey && (!ClickKey.Pressed || !isKeyDown))
-            {
-                Debug.WriteLine(isKeyDown);
+
+            if (MainKey.Pressed && isClickKey && (!ClickKey.Pressed || !isKeyDown))
                 ClickMouse(isKeyDown);
-            }
 
             if (isMainKey && isKeyDown && !MainKey.Pressed) 
                 HandleMainKeyDownPressed();
@@ -161,7 +210,7 @@ namespace ArrowsCursorGUI
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+        private static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
         private static void ClickMouse(bool down) =>
             mouse_event((down ? MOUSEEVENTF_LEFTDOWN : MOUSEEVENTF_LEFTUP), Cursor.Position.X, Cursor.Position.Y, 0, 0);
 
@@ -203,7 +252,6 @@ namespace ArrowsCursorGUI
         private void ExecuteMainKeyDoubleClickAction()
         {
             Speed.SetNextLevel();
-            SpeedChanged?.Invoke(this, EventArgs.Empty);
             // TODO: Flash the level number on the screen.
         }
     }

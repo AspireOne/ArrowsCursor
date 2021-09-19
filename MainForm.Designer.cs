@@ -47,6 +47,10 @@
       this.TutorialLbl1 = new System.Windows.Forms.Label();
       this.disableKeysCheckbox = new System.Windows.Forms.CheckBox();
       this.disableKeysDescLbl = new System.Windows.Forms.Label();
+      this.label1 = new System.Windows.Forms.Label();
+      this.disableFirstSpeedLevelCheckbox = new System.Windows.Forms.CheckBox();
+      this.AccelerateDescLbl = new System.Windows.Forms.Label();
+      this.AccelerateCheckbox = new System.Windows.Forms.CheckBox();
       ((System.ComponentModel.ISupportInitialize)(this.LevelBox1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.LevelBox2)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.LevelBox3)).BeginInit();
@@ -55,7 +59,7 @@
       // SpeedLevelsLbl
       // 
       this.SpeedLevelsLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.SpeedLevelsLbl.Location = new System.Drawing.Point(15, 12);
+      this.SpeedLevelsLbl.Location = new System.Drawing.Point(18, 157);
       this.SpeedLevelsLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
       this.SpeedLevelsLbl.Name = "SpeedLevelsLbl";
       this.SpeedLevelsLbl.Size = new System.Drawing.Size(324, 25);
@@ -67,7 +71,7 @@
       // 
       this.SpeedLevelsDescLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.SpeedLevelsDescLbl.ForeColor = System.Drawing.SystemColors.GrayText;
-      this.SpeedLevelsDescLbl.Location = new System.Drawing.Point(15, 41);
+      this.SpeedLevelsDescLbl.Location = new System.Drawing.Point(18, 186);
       this.SpeedLevelsDescLbl.Name = "SpeedLevelsDescLbl";
       this.SpeedLevelsDescLbl.Size = new System.Drawing.Size(324, 23);
       this.SpeedLevelsDescLbl.TabIndex = 4;
@@ -77,7 +81,7 @@
       // LevelBox1
       // 
       this.LevelBox1.BackColor = System.Drawing.SystemColors.Window;
-      this.LevelBox1.Location = new System.Drawing.Point(15, 88);
+      this.LevelBox1.Location = new System.Drawing.Point(18, 233);
       this.LevelBox1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
       this.LevelBox1.Name = "LevelBox1";
       this.LevelBox1.Size = new System.Drawing.Size(100, 32);
@@ -86,7 +90,7 @@
       // 
       // LevelBox2
       // 
-      this.LevelBox2.Location = new System.Drawing.Point(127, 88);
+      this.LevelBox2.Location = new System.Drawing.Point(130, 233);
       this.LevelBox2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
       this.LevelBox2.Name = "LevelBox2";
       this.LevelBox2.Size = new System.Drawing.Size(100, 32);
@@ -95,7 +99,7 @@
       // 
       // LevelBox3
       // 
-      this.LevelBox3.Location = new System.Drawing.Point(239, 88);
+      this.LevelBox3.Location = new System.Drawing.Point(242, 233);
       this.LevelBox3.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
       this.LevelBox3.Name = "LevelBox3";
       this.LevelBox3.Size = new System.Drawing.Size(100, 32);
@@ -105,7 +109,7 @@
       // ClickKeyStateLbl
       // 
       this.ClickKeyStateLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ClickKeyStateLbl.Location = new System.Drawing.Point(587, 83);
+      this.ClickKeyStateLbl.Location = new System.Drawing.Point(583, 75);
       this.ClickKeyStateLbl.Name = "ClickKeyStateLbl";
       this.ClickKeyStateLbl.Size = new System.Drawing.Size(113, 37);
       this.ClickKeyStateLbl.TabIndex = 19;
@@ -115,7 +119,7 @@
       // ClickKeyBtn
       // 
       this.ClickKeyBtn.Font = new System.Drawing.Font("Microsoft Tai Le", 12.75F);
-      this.ClickKeyBtn.Location = new System.Drawing.Point(492, 83);
+      this.ClickKeyBtn.Location = new System.Drawing.Point(488, 75);
       this.ClickKeyBtn.Name = "ClickKeyBtn";
       this.ClickKeyBtn.Size = new System.Drawing.Size(89, 37);
       this.ClickKeyBtn.TabIndex = 18;
@@ -129,7 +133,7 @@
       this.ClickKeyDescLbl.Name = "ClickKeyDescLbl";
       this.ClickKeyDescLbl.Size = new System.Drawing.Size(324, 41);
       this.ClickKeyDescLbl.TabIndex = 17;
-      this.ClickKeyDescLbl.Text = "The key with which you can click";
+      this.ClickKeyDescLbl.Text = "The key with which you click";
       this.ClickKeyDescLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
       // ClickKeyLbl
@@ -146,7 +150,7 @@
       // MainKeyStateLbl
       // 
       this.MainKeyStateLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.MainKeyStateLbl.Location = new System.Drawing.Point(587, 262);
+      this.MainKeyStateLbl.Location = new System.Drawing.Point(225, 75);
       this.MainKeyStateLbl.Name = "MainKeyStateLbl";
       this.MainKeyStateLbl.Size = new System.Drawing.Size(113, 37);
       this.MainKeyStateLbl.TabIndex = 23;
@@ -156,7 +160,7 @@
       // MainKeyBtn
       // 
       this.MainKeyBtn.Font = new System.Drawing.Font("Microsoft Tai Le", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.MainKeyBtn.Location = new System.Drawing.Point(492, 262);
+      this.MainKeyBtn.Location = new System.Drawing.Point(130, 75);
       this.MainKeyBtn.Name = "MainKeyBtn";
       this.MainKeyBtn.Size = new System.Drawing.Size(89, 37);
       this.MainKeyBtn.TabIndex = 22;
@@ -166,17 +170,17 @@
       // 
       this.MainKeyDescLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.MainKeyDescLbl.ForeColor = System.Drawing.SystemColors.GrayText;
-      this.MainKeyDescLbl.Location = new System.Drawing.Point(376, 199);
+      this.MainKeyDescLbl.Location = new System.Drawing.Point(18, 40);
       this.MainKeyDescLbl.Name = "MainKeyDescLbl";
       this.MainKeyDescLbl.Size = new System.Drawing.Size(324, 41);
       this.MainKeyDescLbl.TabIndex = 21;
-      this.MainKeyDescLbl.Text = "The key that needs to be held while pressing arrow keys";
+      this.MainKeyDescLbl.Text = "The key that needs to be held";
       this.MainKeyDescLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
       // 
       // MainKeyLbl
       // 
       this.MainKeyLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.MainKeyLbl.Location = new System.Drawing.Point(376, 171);
+      this.MainKeyLbl.Location = new System.Drawing.Point(18, 12);
       this.MainKeyLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
       this.MainKeyLbl.Name = "MainKeyLbl";
       this.MainKeyLbl.Size = new System.Drawing.Size(324, 25);
@@ -188,7 +192,7 @@
       // 
       this.TutorialLbl2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.TutorialLbl2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.TutorialLbl2.Location = new System.Drawing.Point(15, 264);
+      this.TutorialLbl2.Location = new System.Drawing.Point(376, 250);
       this.TutorialLbl2.Name = "TutorialLbl2";
       this.TutorialLbl2.Size = new System.Drawing.Size(324, 42);
       this.TutorialLbl2.TabIndex = 26;
@@ -197,7 +201,7 @@
       // TutorialLbl
       // 
       this.TutorialLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.TutorialLbl.Location = new System.Drawing.Point(15, 171);
+      this.TutorialLbl.Location = new System.Drawing.Point(376, 157);
       this.TutorialLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
       this.TutorialLbl.Name = "TutorialLbl";
       this.TutorialLbl.Size = new System.Drawing.Size(324, 25);
@@ -209,7 +213,7 @@
       // 
       this.TutorialLbl1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.TutorialLbl1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.TutorialLbl1.Location = new System.Drawing.Point(15, 213);
+      this.TutorialLbl1.Location = new System.Drawing.Point(376, 199);
       this.TutorialLbl1.Name = "TutorialLbl1";
       this.TutorialLbl1.Size = new System.Drawing.Size(324, 42);
       this.TutorialLbl1.TabIndex = 24;
@@ -217,29 +221,74 @@
       // 
       // disableKeysCheckbox
       // 
-      this.disableKeysCheckbox.Location = new System.Drawing.Point(280, 351);
+      this.disableKeysCheckbox.Font = new System.Drawing.Font("Microsoft Tai Le", 14F);
+      this.disableKeysCheckbox.Location = new System.Drawing.Point(19, 365);
       this.disableKeysCheckbox.Name = "disableKeysCheckbox";
-      this.disableKeysCheckbox.Size = new System.Drawing.Size(153, 24);
+      this.disableKeysCheckbox.Size = new System.Drawing.Size(181, 24);
       this.disableKeysCheckbox.TabIndex = 27;
-      this.disableKeysCheckbox.Text = "Disable keys";
+      this.disableKeysCheckbox.Text = "Disable Main Key";
       this.disableKeysCheckbox.UseVisualStyleBackColor = true;
       // 
       // disableKeysDescLbl
       // 
-      this.disableKeysDescLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.disableKeysDescLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F);
       this.disableKeysDescLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.disableKeysDescLbl.Location = new System.Drawing.Point(192, 378);
+      this.disableKeysDescLbl.Location = new System.Drawing.Point(13, 392);
       this.disableKeysDescLbl.Name = "disableKeysDescLbl";
-      this.disableKeysDescLbl.Size = new System.Drawing.Size(324, 62);
+      this.disableKeysDescLbl.Size = new System.Drawing.Size(321, 69);
       this.disableKeysDescLbl.TabIndex = 28;
-      this.disableKeysDescLbl.Text = "This will disable the main and click keys. Useful when the key you\'re using mis-r" + "eacts with some program.";
+      this.disableKeysDescLbl.Text = "This will disable the main key for other programs. Useful when the key mis-reacts" + " with some program.";
+      // 
+      // label1
+      // 
+      this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+      this.label1.Location = new System.Drawing.Point(376, 301);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(324, 42);
+      this.label1.TabIndex = 29;
+      this.label1.Text = "Hold the Main Key and use the Click Key to click.";
+      // 
+      // disableFirstSpeedLevelCheckbox
+      // 
+      this.disableFirstSpeedLevelCheckbox.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
+      this.disableFirstSpeedLevelCheckbox.Location = new System.Drawing.Point(18, 268);
+      this.disableFirstSpeedLevelCheckbox.Name = "disableFirstSpeedLevelCheckbox";
+      this.disableFirstSpeedLevelCheckbox.Size = new System.Drawing.Size(100, 24);
+      this.disableFirstSpeedLevelCheckbox.TabIndex = 30;
+      this.disableFirstSpeedLevelCheckbox.Text = "disable";
+      this.disableFirstSpeedLevelCheckbox.UseVisualStyleBackColor = true;
+      // 
+      // AccelerateDescLbl
+      // 
+      this.AccelerateDescLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F);
+      this.AccelerateDescLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+      this.AccelerateDescLbl.Location = new System.Drawing.Point(383, 392);
+      this.AccelerateDescLbl.Name = "AccelerateDescLbl";
+      this.AccelerateDescLbl.Size = new System.Drawing.Size(321, 69);
+      this.AccelerateDescLbl.TabIndex = 32;
+      this.AccelerateDescLbl.Text = "This will make the speed gradually increase as you hold the arrows.";
+      // 
+      // AccelerateCheckbox
+      // 
+      this.AccelerateCheckbox.Font = new System.Drawing.Font("Microsoft Tai Le", 14F);
+      this.AccelerateCheckbox.Location = new System.Drawing.Point(387, 365);
+      this.AccelerateCheckbox.Name = "AccelerateCheckbox";
+      this.AccelerateCheckbox.Size = new System.Drawing.Size(181, 24);
+      this.AccelerateCheckbox.TabIndex = 31;
+      this.AccelerateCheckbox.Text = "Accelerate";
+      this.AccelerateCheckbox.UseVisualStyleBackColor = true;
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-      this.ClientSize = new System.Drawing.Size(715, 449);
+      this.ClientSize = new System.Drawing.Size(715, 562);
+      this.Controls.Add(this.AccelerateDescLbl);
+      this.Controls.Add(this.AccelerateCheckbox);
+      this.Controls.Add(this.disableFirstSpeedLevelCheckbox);
+      this.Controls.Add(this.label1);
       this.Controls.Add(this.disableKeysDescLbl);
       this.Controls.Add(this.disableKeysCheckbox);
       this.Controls.Add(this.TutorialLbl2);
@@ -270,13 +319,22 @@
       this.ResumeLayout(false);
     }
 
-    private System.Windows.Forms.Label disableKeysDescLbl;
+    private System.Windows.Forms.CheckBox AccelerateCheckbox;
+    private System.Windows.Forms.Label AccelerateDescLbl;
 
-    private System.Windows.Forms.CheckBox disableKeysCheckbox;
+    private System.Windows.Forms.Label label2;
+
+    private System.Windows.Forms.CheckBox disableFirstSpeedLevelCheckbox;
+
+    private System.Windows.Forms.CheckBox checkBox1;
+    private System.Windows.Forms.CheckBox checkBox2;
+    private System.Windows.Forms.CheckBox checkBox3;
 
     private System.Windows.Forms.Label label1;
 
-    private System.Windows.Forms.CheckBox checkBox1;
+    private System.Windows.Forms.Label disableKeysDescLbl;
+
+    private System.Windows.Forms.CheckBox disableKeysCheckbox;
 
     private System.Windows.Forms.Label ClickKeyDescLbl;
 
@@ -309,8 +367,6 @@
     private System.Windows.Forms.Button MainKeyBtn;
 
     private System.Windows.Forms.Button button1;
-
-    private System.Windows.Forms.Label label2;
 
     private System.Windows.Forms.Label SpeedLevelsLabel;
 
