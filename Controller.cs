@@ -194,7 +194,7 @@ namespace ArrowsCursorGUI
             bool isMainKey = code == MainKey.Code;
             bool isClickKey = code == ClickKey.Code;
 
-            if (MainKey.Pressed && isClickKey && (!ClickKey.Pressed || !isKeyDown))
+            if (isClickKey && (MainKey.Pressed || !isKeyDown) && (!ClickKey.Pressed || !isKeyDown))
                 ClickMouse(isKeyDown);
 
             if (isMainKey && isKeyDown && !MainKey.Pressed) 
