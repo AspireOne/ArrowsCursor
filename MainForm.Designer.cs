@@ -42,9 +42,9 @@
       this.MainKeyBtn = new System.Windows.Forms.Button();
       this.MainKeyDescLbl = new System.Windows.Forms.Label();
       this.MainKeyLbl = new System.Windows.Forms.Label();
-      this.TutorialLbl2 = new System.Windows.Forms.Label();
-      this.TutorialLbl = new System.Windows.Forms.Label();
-      this.TutorialLbl1 = new System.Windows.Forms.Label();
+      this.GuideLbl2 = new System.Windows.Forms.Label();
+      this.GuideLbl = new System.Windows.Forms.Label();
+      this.GuideLbl1 = new System.Windows.Forms.Label();
       this.disableKeysCheckbox = new System.Windows.Forms.CheckBox();
       this.disableKeysDescLbl = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
@@ -188,36 +188,36 @@
       this.MainKeyLbl.Text = "Main Key";
       this.MainKeyLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // TutorialLbl2
+      // GuideLbl2
       // 
-      this.TutorialLbl2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.TutorialLbl2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.TutorialLbl2.Location = new System.Drawing.Point(376, 250);
-      this.TutorialLbl2.Name = "TutorialLbl2";
-      this.TutorialLbl2.Size = new System.Drawing.Size(324, 42);
-      this.TutorialLbl2.TabIndex = 26;
-      this.TutorialLbl2.Text = "Hold the Main Key and use arrows to navigate your cursor.";
+      this.GuideLbl2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.GuideLbl2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+      this.GuideLbl2.Location = new System.Drawing.Point(376, 250);
+      this.GuideLbl2.Name = "GuideLbl2";
+      this.GuideLbl2.Size = new System.Drawing.Size(324, 42);
+      this.GuideLbl2.TabIndex = 26;
+      this.GuideLbl2.Text = "Hold the Main Key and use arrows to navigate your cursor.";
       // 
-      // TutorialLbl
+      // GuideLbl
       // 
-      this.TutorialLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.TutorialLbl.Location = new System.Drawing.Point(376, 157);
-      this.TutorialLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-      this.TutorialLbl.Name = "TutorialLbl";
-      this.TutorialLbl.Size = new System.Drawing.Size(324, 25);
-      this.TutorialLbl.TabIndex = 25;
-      this.TutorialLbl.Text = "Tutorial";
-      this.TutorialLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.GuideLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.GuideLbl.Location = new System.Drawing.Point(376, 157);
+      this.GuideLbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+      this.GuideLbl.Name = "GuideLbl";
+      this.GuideLbl.Size = new System.Drawing.Size(324, 25);
+      this.GuideLbl.TabIndex = 25;
+      this.GuideLbl.Text = "Guide";
+      this.GuideLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // TutorialLbl1
+      // GuideLbl1
       // 
-      this.TutorialLbl1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.TutorialLbl1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-      this.TutorialLbl1.Location = new System.Drawing.Point(376, 199);
-      this.TutorialLbl1.Name = "TutorialLbl1";
-      this.TutorialLbl1.Size = new System.Drawing.Size(324, 42);
-      this.TutorialLbl1.TabIndex = 24;
-      this.TutorialLbl1.Text = "Double-press the Main Key to switch to the next speed level.";
+      this.GuideLbl1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.GuideLbl1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+      this.GuideLbl1.Location = new System.Drawing.Point(376, 199);
+      this.GuideLbl1.Name = "GuideLbl1";
+      this.GuideLbl1.Size = new System.Drawing.Size(324, 42);
+      this.GuideLbl1.TabIndex = 24;
+      this.GuideLbl1.Text = "Double-press the Main Key to switch to the next speed level.";
       // 
       // disableKeysCheckbox
       // 
@@ -284,16 +284,16 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-      this.ClientSize = new System.Drawing.Size(715, 562);
+      this.ClientSize = new System.Drawing.Size(715, 477);
       this.Controls.Add(this.AccelerateDescLbl);
       this.Controls.Add(this.AccelerateCheckbox);
       this.Controls.Add(this.disableFirstSpeedLevelCheckbox);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.disableKeysDescLbl);
       this.Controls.Add(this.disableKeysCheckbox);
-      this.Controls.Add(this.TutorialLbl2);
-      this.Controls.Add(this.TutorialLbl);
-      this.Controls.Add(this.TutorialLbl1);
+      this.Controls.Add(this.GuideLbl2);
+      this.Controls.Add(this.GuideLbl);
+      this.Controls.Add(this.GuideLbl1);
       this.Controls.Add(this.MainKeyStateLbl);
       this.Controls.Add(this.MainKeyBtn);
       this.Controls.Add(this.MainKeyDescLbl);
@@ -355,9 +355,9 @@
 
     private System.Windows.Forms.Label SpeedLevelsDescLbl;
 
-    private System.Windows.Forms.Label TutorialLbl;
-    private System.Windows.Forms.Label TutorialLbl1;
-    private System.Windows.Forms.Label TutorialLbl2;
+    private System.Windows.Forms.Label GuideLbl;
+    private System.Windows.Forms.Label GuideLbl1;
+    private System.Windows.Forms.Label GuideLbl2;
 
     private System.Windows.Forms.Label label3;
 
