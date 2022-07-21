@@ -22,6 +22,7 @@ namespace ArrowsCursorGUI
       InitializeComponent(); // Must come first.
       InitLevelBoxes();
       InitMainKeyButton();
+      InitRightClickKeyButton();
       InitClickKeyButton();
 
       disableKeysCheckbox.CheckedChanged += (o, e) => Controller.Consume = disableKeysCheckbox.Checked;
@@ -50,7 +51,20 @@ namespace ArrowsCursorGUI
           Hook.KeyboardPressed += HandleClickKeyButtonKeyPressed;
         };
       }
-          
+
+      void InitRightClickKeyButton()
+      {
+        RightClickKeyBtn.Text = new KeysConverter().ConvertToString(Controller.ClickKey.Code);
+        RightClickKeyBtn.Click += (obj, e) =>
+        {
+          PrevConsumed = Controller.Consume;
+          Controller.Consume = false;
+          RightClickKeyStateLbl.Text = "Press any key...";
+          RightClickKeyBtn.Text = "";
+          Hook.KeyboardPressed += HandleRightClickKeyButtonKeyPressed;
+        };
+      }
+
       void InitMainKeyButton()
       {
         MainKeyBtn.Text = new KeysConverter().ConvertToString(Controller.MainKey.Code);
@@ -63,7 +77,7 @@ namespace ArrowsCursorGUI
           Hook.KeyboardPressed += HandleMainKeyButtonKeyPressed;
         };
       }
-      
+
       void InitLevelBoxes()
       {
         NumericUpDown[] levelBoxes = { LevelBox1, LevelBox2, LevelBox3 };
@@ -92,6 +106,16 @@ namespace ArrowsCursorGUI
       ClickKeyBtn.Text = new KeysConverter().ConvertToString(e.KeyboardData.VirtualCode);
       Controller.ClickKey.Code = e.KeyboardData.VirtualCode;
     }
+
+    private void HandleRightClickKeyButtonKeyPressed(object o, GlobalKeyboardHookEventArgs e)
+    {
+      Controller.Consume = PrevConsumed;
+      Hook.KeyboardPressed -= HandleRightClickKeyButtonKeyPressed;
+      RightClickKeyStateLbl.Text = "Click to change";
+      RightClickKeyBtn.Text = new KeysConverter().ConvertToString(e.KeyboardData.VirtualCode);
+      Debug.WriteLine(e.KeyboardData.VirtualCode);
+      Controller.RightClickKey.Code = e.KeyboardData.VirtualCode;
+    }
     
     private void HandleMainKeyButtonKeyPressed(object o, GlobalKeyboardHookEventArgs e)  
     {
@@ -100,6 +124,25 @@ namespace ArrowsCursorGUI
       MainKeyStateLbl.Text = "Click to change";
       MainKeyBtn.Text = new KeysConverter().ConvertToString(e.KeyboardData.VirtualCode);
       Controller.MainKey.Code = e.KeyboardData.VirtualCode;
+    }
+
+    private void label2_Click(object sender, EventArgs e)
+    { 
+    }
+
+    private void label3_Click(object sender, EventArgs e)
+    {
+      
+    }
+
+    private void label4_Click(object sender, EventArgs e)
+    {
+      
+    }
+
+    private void ClickKeyBtn_Click(object sender, EventArgs e)
+    {
+      
     }
   }
 }

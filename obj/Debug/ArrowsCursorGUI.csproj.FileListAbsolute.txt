@@ -8,3 +8,14 @@ C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.csproj.Ge
 C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.csproj.CoreCompileInputs.cache
 C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.exe
 C:\Users\matej\RiderProjects\ArrowsCursorGUI\obj\Debug\ArrowsCursorGUI.pdb
+C:\Users\ext-matejp\source\repos\arrowscursor\bin\Debug\ArrowsCursorGUI.exe.config
+C:\Users\ext-matejp\source\repos\arrowscursor\bin\Debug\ArrowsCursorGUI.exe
+C:\Users\ext-matejp\source\repos\arrowscursor\bin\Debug\ArrowsCursorGUI.pdb
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.csproj.AssemblyReference.cache
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.MainForm.resources
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.Properties.Resources.resources
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.csproj.GenerateResource.cache
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.csproj.CoreCompileInputs.cache
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.exe
+C:\Users\ext-matejp\source\repos\arrowscursor\obj\Debug\ArrowsCursorGUI.pdb
